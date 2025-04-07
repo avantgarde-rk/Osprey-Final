@@ -1,0 +1,132 @@
+/* Header */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #fff;
+    color: gray;
+    padding: 10px 0; /* Increase padding for better height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between logo and nav items */
+    align-items: center; /* Center align vertically */
+}
+
+/* Navbar container */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Prevent navbar from being too wide */
+    margin: 0 auto; /* Center navbar */
+    padding: 0 20px; /* Spacing for left and right */
+}
+
+/* Logo styling */
+.navbar-brand img {
+    height: 70px;
+    width: auto;
+}
+
+/* Navbar items container */
+.navbar-nav {
+    display: flex; /* Flexbox for horizontal layout */
+    gap: 30px; /* Space between each navigation item */
+    font-size: 1.2rem; /* Font size for links */
+    font-weight: bold; /* Bold the nav items */
+}
+
+/* Individual nav items */
+.nav-item {
+    list-style: none; /* Remove default list styling */
+}
+
+/* Navbar links */
+.nav-link {
+    color: #3C3D37; /* Main link color */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Change text color on hover */
+.nav-link:hover {
+    color: #FF8911 !important; /* Orange hover color */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Ensure the toggle button is visible on mobile */
+.navbar-toggler {
+    color: orange;
+    border-color: orange;
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+    color: #FF8911 !important;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Underline animation for active link */
+.navbar-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #FF8911;
+    animation: active-underline 0.5s ease-in-out;
+}
+
+/* Hover underline animation */
+.navbar-nav .nav-link:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #FF8911;
+    animation: hover-underline 0.3s ease-in-out;
+}
+
+/* Keyframes for underline animations */
+@keyframes active-underline {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes hover-underline {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    /* Stack the navbar items vertically on small screens */
+    .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* Navbar brand logo on smaller screens */
+    .navbar-brand img {
+        height: 60px;
+    }
+
+    /* Navbar container adjustments */
+    .navbar-container {
+        padding: 0 10px;
+    }
+}

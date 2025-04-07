@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Locations Map</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for contrast */
+        }
+        .navbar {
+            background-color: #fff; /* White background for navbar */
+        }
+        #map {
+            height: 100vh; /* Full height for the map */
+            width: 100%;
+            border: 2px solid orange; /* Orange border for the map */
+            border-radius: 10px; /* Rounded corners */
+            margin: 0; /* Remove margin */
+        }
+        .map-container {
+            padding: 0; /* No padding around the map */
+            background-color: white; /* White background for the container */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+        }
+        h1 {
+            color: #FF8911; /* Orange color for the header */
+        }
+        /* Animation for logistics theme */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#home">
+                <img src="/ospreygroup logo.png" alt="LogiTech Logo" style="height: 70px; width: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#career">Career</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 fade-in">
+        <h1>Office Locations</h1>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20, 0], 2); // Centered on the world
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Office locations
+        var offices = [
+            { name: "New York", coords: [40.7128, -74.0060] },
+            { name: "London", coords: [51.5074, -0.1278] },
+            { name: "Tokyo", coords: [35.6762, 139.6503] },
+            { name: "Sydney", coords: [-33.8688, 151.2093] },
+            // Add more office locations as needed
+        ];
+
+        // Add markers for each office
+        offices.forEach(function(office) {
+            var marker = L.marker(office.coords).addTo(map);
+            marker.bindPopup(office.name);
+        });
+    </script>
+</body>
+</html>
